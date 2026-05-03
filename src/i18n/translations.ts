@@ -1,6 +1,6 @@
 export type Lang = "en" | "hi";
 
-export const translations = {
+export const translations: Record<Lang, Dict> = {
   en: {
     nav: { about: "About", work: "Our Work", upcoming: "Upcoming", impact: "Impact", gallery: "Gallery", contact: "Contact", donate: "Donate" },
     hero: {
@@ -157,6 +157,23 @@ export const translations = {
     },
     footer: { rights: "सर्वाधिकार सुरक्षित।", tagline: "धारा 12A व 80G के अंतर्गत पंजीकृत गैर-लाभकारी संस्था।" },
   },
-} as const;
+};
 
-export type Dict = (typeof translations)[Lang];
+type Item = { title: string; desc: string };
+type ItemTagged = Item & { tag: string };
+type Stat = { n: string; l: string };
+type Testimonial = { quote: string; name: string; role: string };
+
+export type Dict = {
+  nav: { about: string; work: string; upcoming: string; impact: string; gallery: string; contact: string; donate: string };
+  hero: { tag: string; title: string; subtitle: string; cta1: string; cta2: string };
+  about: { kicker: string; title: string; body: string; missionTitle: string; mission: string; visionTitle: string; vision: string };
+  work: { kicker: string; title: string; items: Item[] };
+  upcoming: { kicker: string; title: string; items: ItemTagged[] };
+  impact: { kicker: string; title: string; stats: Stat[] };
+  gallery: { kicker: string; title: string };
+  testimonials: { kicker: string; title: string; items: Testimonial[] };
+  cta: { title: string; body: string; donate: string; volunteer: string };
+  contact: { kicker: string; title: string; addressLabel: string; address: string; phoneLabel: string; emailLabel: string; name: string; email: string; message: string; send: string };
+  footer: { rights: string; tagline: string };
+};
