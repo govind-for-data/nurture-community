@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LanguageProvider, useLang } from "@/i18n/LanguageContext";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero.jpeg";
 import g1 from "@/assets/g1.jpg";
 import g2 from "@/assets/g2.jpg";
 import g3 from "@/assets/g3.jpg";
@@ -10,9 +10,9 @@ import { Heart, Users, Sprout, BookOpen, Stethoscope, Mail, Phone, MapPin, Langu
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aasha Foundation — Empowering Rural India" },
-      { name: "description", content: "Aasha Foundation is a non-profit working on rural education, healthcare, women empowerment and the environment across India." },
-      { property: "og:title", content: "Aasha Foundation — Empowering Rural India" },
+      { title: "Yug Society" },
+      { name: "description", content: "Yug Society is a non-profit working on rural education, healthcare, women empowerment and the environment across Uttrakhand." },
+      { property: "og:title", content: "Yug Society — Empowering Rural Uttrakhand" },
       { property: "og:description", content: "Join us in transforming villages through education, healthcare and sustainable livelihoods." },
     ],
   }),
@@ -80,7 +80,7 @@ function Header() {
           <div className="flex h-9 w-9 items-center justify-center rounded-full" style={{ background: "var(--gradient-warm)" }}>
             <Heart className="h-5 w-5 text-primary-foreground" fill="currentColor" />
           </div>
-          <span className="text-lg font-bold tracking-tight">Aasha Foundation</span>
+          <span className="text-lg font-bold tracking-tight">Yug Society</span>
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {links.map((l) => (
