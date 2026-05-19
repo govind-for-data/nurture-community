@@ -19,8 +19,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v1
+      - run: npm run predeploy
+      - uses: actions/upload-pages-artifact@v5.0.0
         with:
-          path: dist
-      - uses: actions/deploy-pages@v1
+          path: dist/client
+      - uses: actions/deploy-pages@v5.0.0
