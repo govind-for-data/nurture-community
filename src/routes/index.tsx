@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { LanguageProvider, useLang } from "@/i18n/LanguageContext";
 import heroImg from "@/assets/hero.jpeg";
 import g1 from "@/assets/g1.jpg";
@@ -8,18 +9,15 @@ import g4 from "@/assets/g4.jpg";
 import { Heart, Users, Sprout, BookOpen, Stethoscope, Mail, Phone, MapPin, Languages } from "lucide-react";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Yug Society" },
-      { name: "description", content: "Yug Society is a non-profit working on rural education, healthcare, women empowerment and the environment across Uttrakhand." },
-      { property: "og:title", content: "Yug Society — Empowering Rural Uttrakhand" },
-      { property: "og:description", content: "Join us in transforming villages through education, healthcare and sustainable livelihoods." },
-    ],
-  }),
   component: Index,
 });
 
 function Index() {
+  useEffect(() => {
+    document.title = "Yug Society";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Yug Society is a non-profit working on rural education, healthcare, women empowerment and the environment across Uttrakhand.");
+  }, []);
+
   return (
     <LanguageProvider>
       <Site />
