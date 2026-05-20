@@ -18,20 +18,20 @@ const cssFiles = files.filter((file) => file.endsWith(".css") && file.startsWith
 if (jsFiles.length === 0) {
   throw new Error("No entry JS file found in dist/client/assets. Expected index-*.js.");
 }
-if (cssFiles.length === 0) {
-  throw new Error("No CSS file found in dist/client/assets. Expected styles-*.css.");
-}
 
 const entryJs = jsFiles.sort((a, b) => {
   const aStat = fs.statSync(path.join(assetsDir, a));
   const bStat = fs.statSync(path.join(assetsDir, b));
   return bStat.size - aStat.size;
 })[0];
-const cssFile = cssFiles.sort((a, b) => {
+
+const cssFile = cssFiles.length > 0 ? cssFiles.sort((a, b) => {
   const aStat = fs.statSync(path.join(assetsDir, a));
   const bStat = fs.statSync(path.join(assetsDir, b));
   return bStat.size - aStat.size;
-})[0];
+})[0] : null;
+
+const cssLink = cssFile ? `    <link rel="stylesheet" href="./assets/${cssFile}" />\n` : '';
 
 const indexHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -39,8 +39,7 @@ const indexHtml = `<!DOCTYPE html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/nurture-community/" />
-    <link rel="stylesheet" href="./assets/${cssFile}" />
-    <title>Nurture Community</title>
+${cssLink}    <title>Nurture Community</title>
   </head>
   <body>
     <div id="root"></div>
