@@ -112,7 +112,7 @@ function Hero() {
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">{t.hero.subtitle}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#cta" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-accent-foreground shadow-md transition hover:translate-y-[-1px]" style={{ background: "var(--gradient-sun)", boxShadow: "var(--shadow-soft)" }}>
+            <a href="#cta" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-accent-foreground shadow-md transition hover:translate-y-px" style={{ background: "var(--gradient-sun)", boxShadow: "var(--shadow-soft)" }}>
               <Heart className="h-4 w-4" fill="currentColor" /> {t.hero.cta1}
             </a>
             <a href="#cta" className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card px-6 py-3 text-sm font-semibold text-primary transition hover:bg-secondary">
@@ -177,7 +177,7 @@ function Work() {
         <SectionHeader kicker={t.work.kicker} title={t.work.title} />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {t.work.items.map((it, i) => {
-            const Icon = workIcons[i];
+            const Icon = workIcons[i] ?? Sprout;
             return (
               <div key={i} className="group rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:shadow-lg">
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
@@ -309,11 +309,11 @@ function Contact() {
             </div>
             <div className="flex items-start gap-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"><Phone className="h-5 w-5" /></div>
-              <div><div className="font-semibold">{t.contact.phoneLabel}</div><div className="text-muted-foreground">+91 98100 12345</div></div>
+              <div><div className="font-semibold">{t.contact.phoneLabel}</div><div className="text-muted-foreground">+91 98100 00000</div></div>
             </div>
             <div className="flex items-start gap-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"><Mail className="h-5 w-5" /></div>
-              <div><div className="font-semibold">{t.contact.emailLabel}</div><div className="text-muted-foreground">hello@aashafoundation.org</div></div>
+              <div><div className="font-semibold">{t.contact.emailLabel}</div><div className="text-muted-foreground">foundationyug3@gmail.com</div></div>
             </div>
           </div>
           <form onSubmit={(e) => e.preventDefault()} className="space-y-4 rounded-2xl border border-border bg-card p-6 shadow-sm">
@@ -339,7 +339,7 @@ function Footer() {
           <div className="flex h-8 w-8 items-center justify-center rounded-full" style={{ background: "var(--gradient-warm)" }}>
             <Heart className="h-4 w-4 text-primary-foreground" fill="currentColor" />
           </div>
-          <span className="font-semibold text-foreground">Aasha Foundation</span>
+          <span className="font-semibold text-foreground">Yug Society</span>
         </div>
         <p className="text-center">{t.footer.tagline}</p>
         <p>© {new Date().getFullYear()} · {t.footer.rights}</p>
